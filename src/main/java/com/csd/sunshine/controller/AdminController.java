@@ -27,6 +27,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
+@RequestMapping("/api")
 public class AdminController {
 
     @Autowired
@@ -39,22 +40,24 @@ public class AdminController {
 
     /**
      * 登陆
-     * @param phone 用户名
+     * @param username 用户名
      * @param password 密码
      * @return 返回状态
      */
     @PostMapping("/login")
     @ApiOperation(value = "用户登录")
-    public BaseResult login(String phone, String password, HttpServletRequest request){
+    public BaseResult login( String username, String password, HttpServletRequest request){
 
         //接收前端传过来的信息
+        System.out.println(username);
+        System.out.println(password);
 
         //密码加盐sha256加密
         password = SHA256.SHA256Encode(password + slat);
         //subject
         Subject subject = SecurityUtils.getSubject();
         //token
-        AuthenticationToken authenticationToken = new UsernamePasswordToken(phone, password);
+        AuthenticationToken authenticationToken = new UsernamePasswordToken(username, password);
         //返回信息
         try {
             subject.login(authenticationToken);
@@ -75,11 +78,13 @@ public class AdminController {
      * @return 查询返回结果
      */
     @GetMapping("/findByName")
-    public BaseResult findByName(@PathVariable("username") String username){
-
-        List<Admin> users = adminService.findByName(username);
-        //判断
-        if(null != users && users.size() > 0){
+    public BaseResult findByName(String username){
+        //接收前端传过来的信息
+        System.out.println(username);
+        //调用查询的方法
+        List<Admin> us = adminService.findByName(username);
+        //判断是否存在
+        if(null != us && us.size() > 0){
             return new BaseResult("-1","用户名已存在",0);
         }else{
             return new BaseResult(BaseCode.SUCCESS.getCode(),"用户名可用",1);
