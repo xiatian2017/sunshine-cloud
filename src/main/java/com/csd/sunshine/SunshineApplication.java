@@ -3,7 +3,6 @@ package com.csd.sunshine;
 import org.springframework.boot.SpringApplication;
 import com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
@@ -22,7 +21,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 //包扫描
 @MapperScan(basePackages = {"com.csd.sunshine.mapper"})
 @RequestMapping(value = "/")
-@ComponentScan(value = {"com.csd.sunshine.controller", "com.csd.sunshine.service","com.csd.sunshine.common"})
 public class SunshineApplication {
 
     public static void main(String[] args) {

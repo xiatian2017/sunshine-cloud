@@ -15,12 +15,6 @@ import java.util.List;
  */
 public interface AdminService {
 
-    /**
-     * 通过用户名查询
-     * @param username 用户名
-     * @return 管理员用户
-     */
-    List<Admin> findByName(String username);
 
     /**
      * 登陆
@@ -30,6 +24,13 @@ public interface AdminService {
     Admin login(Admin admin);
 
 
+    /**
+     * 通过用户名查询
+     * @param username 用户名
+     * @return 管理员用户
+     */
+    List<Admin> findByName(String username);
+    
     /**
      * 查询用户的角色集
      * @param user 用户

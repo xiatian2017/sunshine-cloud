@@ -22,22 +22,19 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
 
+    //登陆
+    @Override
+    public Admin login(Admin admin) {
+
+        return adminMapper.login(admin);
+    }
+
+
     //通过用户名查询
     @Override
     public List<Admin> findByName(String username) {
 
         return adminMapper.findByName(username);
-    }
-
-    /**
-     * 登陆
-     * @param admin
-     * @return
-     */
-    @Override
-    public Admin login(Admin admin) {
-
-        return adminMapper.login(admin);
     }
 
 
@@ -46,7 +43,6 @@ public class AdminServiceImpl implements AdminService {
 
         return adminMapper.queryRolesUser(user);
     }
-
 
 
     @Override

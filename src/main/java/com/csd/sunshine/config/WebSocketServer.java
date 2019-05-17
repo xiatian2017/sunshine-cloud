@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author xiaobb
+ * @author liuqi
  * @description websocket服务
- * @date 2019/4/27 16:35
+ * @date 2019/5/17 16:35
  */
 @Slf4j
 @Component

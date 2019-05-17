@@ -18,10 +18,9 @@ import java.util.List;
 @Mapper
 public interface AdminMapper {
 
+    Admin login(Admin admin);
 
     List<Admin> findByName(String username);
-
-    Admin login(Admin admin);
 
     List<Permission> queryByUser(Admin user);
 
