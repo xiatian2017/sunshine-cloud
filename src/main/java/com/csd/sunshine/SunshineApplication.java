@@ -10,6 +10,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * 启动类
+ * @Description: sunshine
+ * @EnglishName LuKe
  * @author liuqi
  * @date 2019.5.16
  */
