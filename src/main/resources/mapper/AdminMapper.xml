@@ -3,9 +3,9 @@
 <mapper namespace="com.csd.sunshine.mapper.AdminMapper">
     <resultMap id="BaseResultMap" type="com.csd.sunshine.model.entity.Admin">
         <result column="id" jdbcType="INTEGER" property="id"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="phone" jdbcType="VARCHAR" property="phone"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="is_readonly" jdbcType="INTEGER" property="is_readonly"/>
@@ -21,12 +21,5 @@
     SELECT * FROM sun_admin WHERE username =#{username} AND STATUS = 1
   </select>
 
-    <!--用户登陆-->
-    <select id="login" parameterType="com.csd.sunshine.model.entity.Admin" resultMap="BaseResultMap">
-
-    SELECT * FROM sun_admin
-    WHERE username = #{username} and STATUS = 1
-
-  </select>
 
 </mapper>

@@ -17,14 +17,6 @@ public interface AdminService {
 
 
     /**
-     * 登陆
-     * @param admin
-     * @return
-     */
-    Admin login(Admin admin);
-
-
-    /**
      * 通过用户名查询
      * @param username 用户名
      * @return 管理员用户

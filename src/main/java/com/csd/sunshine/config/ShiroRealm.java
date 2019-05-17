@@ -78,7 +78,7 @@ public class ShiroRealm extends AuthorizingRealm {
             String password = user.getPassword();
             SimpleAuthenticationInfo simpleAuthenticationInfo =
                     //shiro自动检验密码
-                    //手机号，密码，唯一权限id
+                    //user，密码，唯一权限id
             new SimpleAuthenticationInfo(user, password, getName());
             return simpleAuthenticationInfo;
         }

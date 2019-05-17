@@ -29,9 +29,9 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        StringBuilder sb = new StringBuilder("接口描述:");
-        sb.append(String.format("默认返回值格式为:{\"status\":\"0\",\"message\":\"OK\",\"data\":\"{}\"}, status为错误码,message为错误信息,data为携带数据."));
-        System.out.println(sb.toString());
+       // StringBuilder sb = new StringBuilder("接口描述:");
+       // sb.append(String.format("默认返回值格式为:{\"status\":\"0\",\"message\":\"OK\",\"data\":\"{}\"}, status为错误码,message为错误信息,data为携带数据."));
+      //  System.out.println(sb.toString());
 
         return new ApiInfoBuilder()
                 .title("接口描述1.0 ")

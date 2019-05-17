@@ -72,6 +72,21 @@ public class AdminController {
 
 
 
+    @GetMapping("/logout")
+    @ApiOperation(value = "用户退出")
+    public BaseResult logout(){
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.logout();
+            return new BaseResult("200","退出成功",1);
+        }catch (Exception e){
+            e.printStackTrace();
+            log.error("登陆失败",e);
+            return new BaseResult("500","退出失败",0);
+        }
+    }
+
+
     /**
      * 根据用户名查询
      * @param username 用户名
