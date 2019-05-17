@@ -16,6 +16,7 @@ import java.util.Date;
 public class Permission implements Serializable {
 
     private Integer id;
+    private String name;        //权限唯一ID
     private Integer parent_id;  //父类ID,根节点为0
     private String display_name;//权限展示名
     private Integer is_show;    //是否展示在菜单栏
@@ -28,6 +29,7 @@ public class Permission implements Serializable {
     public String toString() {
         return "Permission{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", parent_id=" + parent_id +
                 ", display_name='" + display_name + '\'' +
                 ", is_show=" + is_show +

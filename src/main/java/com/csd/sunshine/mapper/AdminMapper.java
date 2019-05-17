@@ -1,8 +1,14 @@
 package com.csd.sunshine.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.csd.sunshine.controller.AdminController;
 import com.csd.sunshine.model.entity.Admin;
+import com.csd.sunshine.model.entity.Permission;
+import com.csd.sunshine.model.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Description: sunshine
@@ -12,16 +18,18 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Mapper
-public interface AdminMapper {
+public interface AdminMapper extends BaseMapper<Admin> {
 
 
-    Admin findByName(String username);
+    List<Admin> findByName(String username);
 
-
-    /**
-     * 登陆
-     * @param admin
-     * @return
-     */
     Admin login(Admin admin);
+
+    int createNewAdmin(Admin user);
+
+    List<Permission> queryByUser(Admin user);
+
+    List<Role> queryRolesUser(Admin user);
+
+    void setRoles(List<AdminController.AdminRoles> obj) throws Exception;
 }
