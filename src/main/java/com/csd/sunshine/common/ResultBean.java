@@ -236,4 +236,5 @@ public class ResultBean<T> implements Serializable {
         return ofSuccess(pageInfo.getList(), (int) pageInfo.getTotal(), pageInfo.getPageNum(), pageInfo.getPageSize());
     }
 
+
 }
