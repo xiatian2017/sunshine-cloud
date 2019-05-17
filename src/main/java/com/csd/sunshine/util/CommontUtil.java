@@ -6,9 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * @author liuqi
  * @description 通用工具
- * @date 2019/5/16 9:40
  */
 public class CommontUtil {
     private final static String UNKNOWN = "unknown";

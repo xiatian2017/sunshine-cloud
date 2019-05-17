@@ -45,17 +45,5 @@ public interface AdminService {
     List<Permission> queryByUser(Admin user);
 
 
-    /**
-     * 为管理员分配角色
-     * @param adminRoles 封装了管理员id和所分配的角色id集合
-     */
-    void setRoles(AdminController.AdminRoles adminRoles) throws Exception;
-
-    /**
-     * 新建管理员用户
-     * @param user 用户参数
-     * @return 影响行数
-     */
-    int createNewAdmin(Admin user);
 
 }

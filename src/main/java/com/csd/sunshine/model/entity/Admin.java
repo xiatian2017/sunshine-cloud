@@ -18,6 +18,7 @@ public class Admin implements Serializable {
 
 
     private Integer id;
+    private String phone;
     private String username;
     private String nickname;
     private String password;
@@ -37,6 +38,7 @@ public class Admin implements Serializable {
     public String toString() {
         return "Admin{" +
                 "id=" + id +
+                ", phone='" + phone + '\'' +
                 ", username='" + username + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
