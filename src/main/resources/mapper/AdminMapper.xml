@@ -20,4 +20,13 @@
 
     SELECT * FROM sun_admin WHERE username =#{username} AND STATUS = 1
   </select>
+
+    <!--用户登陆-->
+    <select id="login" parameterType="com.csd.sunshine.model.entity.Admin" resultMap="BaseResultMap">
+
+    SELECT * FROM sun_admin
+    WHERE phone=#{phone} and STATUS = 1
+
+  </select>
+
 </mapper>

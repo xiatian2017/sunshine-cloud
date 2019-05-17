@@ -16,4 +16,12 @@ public interface AdminMapper {
 
 
     Admin findByName(String username);
+
+
+    /**
+     * 登陆
+     * @param admin
+     * @return
+     */
+    Admin login(Admin admin);
 }

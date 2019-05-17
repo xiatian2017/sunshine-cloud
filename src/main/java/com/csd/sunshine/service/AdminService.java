@@ -16,4 +16,11 @@ public interface AdminService {
      * @return 管理员用户
      */
     Admin findByName(String username);
+
+    /**
+     * 登陆
+     * @param admin
+     * @return
+     */
+    Admin login(Admin admin);
 }

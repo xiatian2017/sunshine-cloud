@@ -24,4 +24,15 @@ public class AdminServiceImpl implements AdminService {
 
         return adminMapper.findByName(username);
     }
+
+    /**
+     * 登陆
+     * @param admin
+     * @return
+     */
+    @Override
+    public Admin login(Admin admin) {
+
+        return adminMapper.login(admin);
+    }
 }
