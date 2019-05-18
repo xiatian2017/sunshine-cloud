@@ -16,7 +16,6 @@ import java.util.List;
 @Data
 public class Admin implements Serializable {
 
-
     private Integer id;
     private String phone;
     private String username;
@@ -30,6 +29,7 @@ public class Admin implements Serializable {
     private Date created_at;
     private Date updated_at;
 
+    //角色和权限
     private List<Role> roles;
     private List<Permission> permissions;
 
