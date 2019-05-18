@@ -17,7 +17,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 //启动类
 @EnableSwagger2
 @SpringBootApplication(exclude = {PageHelperAutoConfiguration.class})
-
 //包扫描
 @MapperScan(basePackages = {"com.csd.sunshine.mapper"})
 @RequestMapping(value = "/")
