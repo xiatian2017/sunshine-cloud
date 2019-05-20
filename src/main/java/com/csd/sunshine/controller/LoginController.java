@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * admin用户登陆界面
  * @Description: sunshine
  * @EnglishName LuKe
  * @authod liuqi
- * @date 2019/5/20 15:02
+ * @date 2019/5/17 15:02
  */
 @Slf4j
 @RestController

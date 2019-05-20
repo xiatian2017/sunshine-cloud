@@ -36,6 +36,7 @@ private static final String CHARSET_NAME = "UTF-8";
     }
 
     public static void main(String[] args) {
+        //对自己的密码加密-----》》64位以上
         String name = SHA256Encode("abc123"+"Jhuiabn9_DhiebFIJ==jel%$dafe4fs@deaerf_");
         //cpu核心数
         int i = Runtime.getRuntime().availableProcessors();

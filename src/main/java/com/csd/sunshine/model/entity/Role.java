@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 角色表
  * @Description: sunshine
  * @EnglishName LuKe
  * @authod liuqi
@@ -19,8 +20,8 @@ public class Role implements Serializable {
     private Integer id;
     private String displayName;//角色展示名
     private Integer level;      //角色等级
-    private Date createdAt;
-    private Date updatedAt;
+    private Date created_at;
+    private Date updated_at;
 
     @Override
     public String toString() {
@@ -28,8 +29,8 @@ public class Role implements Serializable {
                 "id=" + id +
                 ", displayName='" + displayName + '\'' +
                 ", level=" + level +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
+                ", createdAt=" + created_at +
+                ", updatedAt=" + updated_at +
                 '}';
     }
 }

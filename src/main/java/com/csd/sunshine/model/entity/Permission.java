@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 权限表
  * @Description: sunshine
  * @EnglishName LuKe
  * @authod liuqi
@@ -21,8 +22,8 @@ public class Permission implements Serializable {
     private String display_name;//权限展示名
     private Integer is_show;    //是否展示在菜单栏
     private Integer status;     //状态 0：正常 1：禁用
-    private Date createdAt;
-    private Date updatedAt;
+    private Date created_at;
+    private Date updated_at;
 
 
     @Override
@@ -34,8 +35,8 @@ public class Permission implements Serializable {
                 ", display_name='" + display_name + '\'' +
                 ", is_show=" + is_show +
                 ", status=" + status +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
+                ", createdAt=" + created_at +
+                ", updatedAt=" + updated_at +
                 '}';
     }
 }
