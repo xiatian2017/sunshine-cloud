@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Repository
 @Mapper
-public interface AdminMapper {
+public interface AdminMapper{
 
     Admin findByName(String username);
 
