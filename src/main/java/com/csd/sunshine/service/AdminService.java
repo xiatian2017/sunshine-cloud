@@ -21,7 +21,7 @@ public interface AdminService {
      * @param username 用户名
      * @return 管理员用户
      */
-    List<Admin> findByName(String username);
+    Admin findByName(String username);
     
     /**
      * 查询用户的角色集

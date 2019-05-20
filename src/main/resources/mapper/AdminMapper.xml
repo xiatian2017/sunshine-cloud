@@ -15,7 +15,7 @@
         <result column="updated_at" jdbcType="TIMESTAMP" property="updated_at"/>
     </resultMap>
 
-    <!--查询-->
+    <!--查询用户名-->
     <select id="findByName" parameterType="com.csd.sunshine.model.entity.Admin" resultMap="BaseResultMap">
 
     SELECT * FROM sun_admin WHERE username =#{username} AND STATUS = 1

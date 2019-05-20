@@ -36,9 +36,9 @@ private static final String CHARSET_NAME = "UTF-8";
     }
 
     public static void main(String[] args) {
-        String name = SHA256Encode("NAME");
+        String name = SHA256Encode("abc123"+"Jhuiabn9_DhiebFIJ==jel%$dafe4fs@deaerf_");
         //cpu核心数
         int i = Runtime.getRuntime().availableProcessors();
-
+        System.out.println(name);
     }
 }

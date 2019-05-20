@@ -66,7 +66,8 @@ public class ShiroRealm extends AuthorizingRealm {
         String username = authenticationToken.getPrincipal().toString();
         Admin user = null;
         try {
-            user = (Admin) adminService.findByName(username);
+            //调用查询的方法查询用户名
+            user = adminService.findByName(username);
         } catch (Exception e) {
             e.printStackTrace();
         }

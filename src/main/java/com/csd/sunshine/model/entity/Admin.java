@@ -52,4 +52,5 @@ public class Admin implements Serializable {
                 ", permissions=" + permissions +
                 '}';
     }
+
 }

@@ -23,9 +23,9 @@ public class AdminServiceImpl implements AdminService {
 
 
 
-    //通过用户名查询
+    //查询用户名
     @Override
-    public List<Admin> findByName(String username) {
+    public Admin findByName(String username) {
 
         return adminMapper.findByName(username);
     }

@@ -1,7 +1,7 @@
 package com.csd.sunshine.controller;
 
-import com.csd.sunshine.common.BaseCode;
 import com.csd.sunshine.common.BaseResult;
+import com.csd.sunshine.common.ResultBean;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.SHA256;
@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 
 /**
@@ -28,6 +27,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(methods = { RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE }, origins = "*")
 public class AdminController {
 
     @Autowired
@@ -88,26 +88,25 @@ public class AdminController {
 
 
     /**
-     * 根据用户名查询
+     * 用户名查询
      * @param username 用户名
      * @return 查询返回结果
      */
     @GetMapping("/findByName")
-    public BaseResult findByName(String username){
+    public ResultBean findByName(String username){
+
         //接收前端传过来的信息
         System.out.println(username);
         //调用查询的方法
-        List<Admin> us = adminService.findByName(username);
+        Admin us = adminService.findByName(username);
         //判断是否存在
-        if(null != us && us.size() > 0){
-            return new BaseResult("-1","用户名已存在",0);
-        }else{
-            return new BaseResult(BaseCode.SUCCESS.getCode(),"用户名可用",1);
+        if (us != null){
+            return ResultBean.ofError(0,"用户名已存在");
+        }else {
+            return ResultBean.ofSuccess(1,"用户名可用");
         }
+
     }
-
-
-
 
 
 }
