@@ -1,6 +1,5 @@
 package com.csd.sunshine.service;
 
-import com.csd.sunshine.controller.AdminController;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.entity.Role;
@@ -37,6 +36,25 @@ public interface AdminService {
      */
     List<Permission> queryByUser(Admin user);
 
+    /**
+     * 新建管理员用户
+     * @param user 用户参数
+     * @return 影响行数
+     */
+    int createNewAdmin(Admin user);
 
+    /**
+     * 添加
+     * @param user
+     * @return 添加一行---》id自增
+     */
+    int insert(Admin user);
+
+    /**
+     * 查询
+     * @param user
+     * @return 查询多行
+     */
+    List<Admin> selectByMap(Admin user);
 
 }

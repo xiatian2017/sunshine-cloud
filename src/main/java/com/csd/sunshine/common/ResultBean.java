@@ -1,7 +1,7 @@
 package com.csd.sunshine.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.github.pagehelper.PageInfo;
+//import com.github.pagehelper.PageInfo;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -232,9 +232,9 @@ public class ResultBean<T> implements Serializable {
         return resultBean;
     }
 
-    public static <T> ResultBean<List<T>> ofSuccess(PageInfo<T> pageInfo) {
+ /*   public static <T> ResultBean<List<T>> ofSuccess(PageInfo<T> pageInfo) {
         return ofSuccess(pageInfo.getList(), (int) pageInfo.getTotal(), pageInfo.getPageNum(), pageInfo.getPageSize());
-    }
+    }*/
 
 
 }

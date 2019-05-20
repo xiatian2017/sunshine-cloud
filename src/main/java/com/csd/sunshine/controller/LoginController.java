@@ -93,6 +93,7 @@ public class LoginController {
      * @return 查询返回结果
      */
     @GetMapping("/findByName")
+    @ApiOperation(value = "用户名查询")
     public ResultBean findByName(String username){
 
         //接收前端传过来的信息
