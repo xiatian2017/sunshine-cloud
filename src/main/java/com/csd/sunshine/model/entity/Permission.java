@@ -1,5 +1,8 @@
 package com.csd.sunshine.model.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,8 +17,10 @@ import java.util.Date;
  */
 
 @Data
+@TableName("sun_permission")
 public class Permission implements Serializable {
 
+    @TableId(type = IdType.AUTO)
     private Integer id;
     private String name;        //权限唯一ID
     private Integer parent_id;  //父类ID,根节点为0

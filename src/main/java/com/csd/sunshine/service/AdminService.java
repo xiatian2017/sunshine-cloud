@@ -40,7 +40,7 @@ public interface AdminService {
     /**
      * 新建管理员用户
      * @param user 用户参数
-     * @return 影响行数
+     * @return
      */
     int createNewAdmin(Admin user);
 
@@ -50,5 +50,12 @@ public interface AdminService {
      * @return
      */
     int updateUserSataus(Admin user, HttpServletRequest request);
+
+    /**
+     * 根据id删除管理员
+     * @param id id
+     * @return
+     */
+    void deleteById(Integer id);
 
 }

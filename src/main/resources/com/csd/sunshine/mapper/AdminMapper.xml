@@ -22,12 +22,18 @@
      SELECT * FROM sun_admin WHERE username =#{username} AND STATUS = 1
     </select>
 
-    <!--修改用户的状态-->
+    <!--通过id修改用户的状态-->
     <update id="updateUserSataus" parameterType="com.csd.sunshine.model.entity.Admin">
 
       UPDATE sun_admin SET last_login_ip = #{last_login_ip},
                       last_login_token = #{last_login_token},
                      login_at = #{login_at} WHERE id = #{id}
         </update>
+
+    <!--通过id删除当前管理员-->
+    <delete id="deleteAdminRole" parameterType="com.csd.sunshine.model.entity.Admin">
+
+        delete from sun_admin_role where admin_id = #{id}
+    </delete>
 
 </mapper>

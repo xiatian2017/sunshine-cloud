@@ -26,11 +26,12 @@ import javax.sql.DataSource;
 //包扫描
 @MapperScan(basePackages = {"com.csd.sunshine.mapper"})
 @RequestMapping(value = "/")
-public class SunshineApplication implements ApplicationContextAware {
+public class SunApp implements ApplicationContextAware {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(SunshineApplication.class, args);
+        SpringApplication.run(SunApp.class, args);
+
         System.out.println("阳光小天使");
     }
 

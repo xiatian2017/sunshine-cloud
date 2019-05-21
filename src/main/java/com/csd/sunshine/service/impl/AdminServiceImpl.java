@@ -72,6 +72,15 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.updateUserSataus(user);
     }
 
+    //根据id删除管理员操作
+    @Override
+    public void deleteById(Integer id) {
+        //删除主键id
+        adminMapper.deleteById(id);
+        //删除账号角色
+        adminMapper.deleteAdminRole(id);
+    }
+
     @Override
     public List<Role> queryRolesUser(Admin user) {
 

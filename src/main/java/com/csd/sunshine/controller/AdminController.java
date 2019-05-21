@@ -1,8 +1,8 @@
 package com.csd.sunshine.controller;
 
+import com.csd.sunshine.common.AppException;
 import com.csd.sunshine.common.BaseCode;
 import com.csd.sunshine.common.BaseResult;
-import com.csd.sunshine.mapper.AdminMapper;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.SHA256;
@@ -62,6 +62,25 @@ public class AdminController {
         }
     }
 
-
+    /**
+     * 根据id删除管理员用户
+     * @param id id
+     * @return 删除信息
+     */
+    @PostMapping("/deleteById")
+    public BaseResult deleteById(Integer id) throws AppException{
+        System.out.println(id);
+        Admin loginUser = (Admin) SecurityUtils.getSubject().getPrincipal();
+        try {
+            //调用删除的方法
+            adminService.deleteById(id);
+            log.info("当前登陆用户(id:"+loginUser.getId()+" ,name:"+loginUser.getUsername()+") 删除了当前id="+id+"的管理员");
+            return new BaseResult(BaseCode.SUCCESS.getCode(),"删除成功",1);
+        }catch (Exception e){
+            e.printStackTrace();
+            log.error("删除管理员用户失败",e);
+            throw new AppException("删除管理员用户失败",e);
+        }
+    }
 
 }

@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.entity.Role;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,5 +28,7 @@ public interface AdminMapper extends BaseMapper<Admin> {
     List<Role> queryRolesUser(Admin user);
 
     int updateUserSataus(Admin user);
+
+    void deleteAdminRole(Integer id);
 
 }
