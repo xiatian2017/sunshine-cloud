@@ -5,6 +5,7 @@ import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.entity.Role;
 import com.csd.sunshine.service.AdminService;
+import com.csd.sunshine.service.RoleService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -30,6 +31,9 @@ public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private RoleService roleService;
+
     /**
      * 授权
      * @param principalCollection
@@ -40,12 +44,12 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //获取当前登陆用户后查询该用户角色和权限并赋值
         Admin user = (Admin) SecurityUtils.getSubject().getPrincipal();
-        List<Role> roles = adminService.queryRolesUser(user);
+        List<Role> roles = roleService.queryRolesUser(user);
         List<Permission> permissions = adminService.queryByUser(user);
         user.setRoles(roles);
         user.setPermissions(permissions);
 
-        roles.forEach( role ->info.addRole(role.getDisplayName()));
+        roles.forEach( role ->info.addRole(role.getDisplay_name()));
         permissions.forEach(permission -> info.addStringPermission(permission.getName()));
         return info;
     }

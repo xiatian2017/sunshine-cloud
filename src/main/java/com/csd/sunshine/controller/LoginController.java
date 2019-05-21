@@ -2,11 +2,9 @@ package com.csd.sunshine.controller;
 
 import com.csd.sunshine.common.BaseResult;
 import com.csd.sunshine.common.ResultBean;
-import com.csd.sunshine.mapper.AdminMapper;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.SHA256;
-import com.csd.sunshine.util.TokenProccessor;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -55,7 +53,6 @@ public class LoginController {
         System.out.println(username);
         System.out.println(password);
 
-        //密码加盐sha256加密
         //密码加盐sha256加密-----》看个人习惯
         password = SHA256.SHA256Encode(password + slat);
         //subject

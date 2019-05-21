@@ -22,7 +22,7 @@ public class Role implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private String displayName;//角色展示名
+    private String display_name;//角色展示名
     private Integer level;      //角色等级
     private Date created_at;
     private Date updated_at;
@@ -31,7 +31,7 @@ public class Role implements Serializable {
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", displayName='" + displayName + '\'' +
+                ", displayName='" + display_name + '\'' +
                 ", level=" + level +
                 ", createdAt=" + created_at +
                 ", updatedAt=" + updated_at +

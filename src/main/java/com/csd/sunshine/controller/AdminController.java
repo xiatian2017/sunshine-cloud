@@ -1,9 +1,9 @@
 package com.csd.sunshine.controller;
 
-import com.csd.sunshine.common.AppException;
 import com.csd.sunshine.common.BaseCode;
 import com.csd.sunshine.common.BaseResult;
 import com.csd.sunshine.model.entity.Admin;
+import com.csd.sunshine.model.vo.AdminRoles;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.SHA256;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 管理员界面
+ *
  * @Description: sunshine
  * @EnglishName LuKe
  * @authod liuqi
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(methods = { RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE }, origins = "*")
+@CrossOrigin(methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}, origins = "*")
 public class AdminController {
 
     @Autowired
@@ -37,52 +38,78 @@ public class AdminController {
 
     /**
      * 新建管理用户
+     *
      * @param user 要新建的用户
      * @return 返回信息
      */
     @PostMapping("/add")
     @ApiOperation(value = "新建管理用户")
-    public BaseResult createAdminUser(@RequestBody Admin user){
-
+    public BaseResult createAdminUser(@RequestBody Admin user) {
+        //接收前端传过来的参数
         System.out.println(user);
         //接收的参数不能为空
         Admin loginUser = (Admin) SecurityUtils.getSubject().getPrincipal();
-        Assert.notNull(user.getUsername(),"用户名不可为空");
-        Assert.notNull(user.getPassword(),"密码不可为空");
+        Assert.notNull(user.getUsername(), "用户名不可为空");
+        Assert.notNull(user.getPassword(), "密码不可为空");
 
-        //密码加密
-        user.setPassword(SHA256.SHA256Encode(user.getPassword()+slat));
+        //对密码进行加密
+        user.setPassword(SHA256.SHA256Encode(user.getPassword() + slat));
         int us = adminService.createNewAdmin(user);
-        if(us == -1){
-            return new BaseResult("-1","用户名重复",0);
-        }else{
+        if (us == -1) {
+            return new BaseResult("-1", "用户名重复", 0);
+        } else {
 
-            log.info("用户(id="+loginUser.getId()+") 新建用户（name："+user.getUsername()+")");
-            return new BaseResult(BaseCode.SUCCESS.getCode(),"新建成功",1);
+            log.info("用户(id=" + loginUser.getId() + ") 新建用户（name：" + user.getUsername() + ")");
+            return new BaseResult(BaseCode.SUCCESS.getCode(), "新建成功", 1);
         }
     }
 
     /**
      * 根据id删除管理员用户
+     *
      * @param id id
      * @return 删除信息
      */
     @PostMapping("/deleteById")
     @ApiOperation(value = "根据id删除管理员用户")
-    public BaseResult deleteById(Integer id) throws AppException{
+    public BaseResult deleteById(Integer id) {
+        //接收前端传过来的id
         System.out.println(id);
         Admin loginUser = (Admin) SecurityUtils.getSubject().getPrincipal();
         try {
             //调用删除的方法
             adminService.deleteById(id);
-            log.info("当前登陆用户(id:"+loginUser.getId()+" ,name:"+loginUser.getUsername()+") 删除了当前id="+id+"的管理员");
-            return new BaseResult(BaseCode.SUCCESS.getCode(),"删除成功",1);
-        }catch (Exception e){
+            log.info("当前登陆用户(id:" + loginUser.getId() + " ,name:" + loginUser.getUsername() + ") 删除了当前id=" + id + "的管理员");
+            return new BaseResult(BaseCode.SUCCESS.getCode(), "删除成功", 1);
+        } catch (Exception e) {
             e.printStackTrace();
-            log.error("删除管理员用户失败",e);
-            throw new AppException("删除管理员用户失败",e);
+            log.error("删除管理员用户失败", e);
+            return new BaseResult(BaseCode.FAIL.getCode(), "删除管理员用户失败", 0);
         }
     }
+
+
+    /**
+     * 为管理员分配角色
+     *
+     * @param adminRoles 用户id和分配的角色id
+     */
+    @PostMapping("/addRole")
+    @ApiOperation(value = "添加管理员对应的角色")
+    public BaseResult setRoles(AdminRoles adminRoles) {
+
+        System.out.println(adminRoles+"11111111111111111111");
+        try {
+            adminService.setRoles(adminRoles);
+            log.info(" 添加管理员对应的=" + adminRoles + "角色");
+            return new BaseResult(BaseCode.SUCCESS.getCode(), "分配成功", 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("分配角色时异常", e);
+            return new BaseResult(BaseCode.FAIL.getCode(), "分配失败", 0);
+        }
+    }
+
 
 }
 

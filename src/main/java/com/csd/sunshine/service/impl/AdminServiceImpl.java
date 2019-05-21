@@ -4,6 +4,7 @@ import com.csd.sunshine.mapper.AdminMapper;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.entity.Role;
+import com.csd.sunshine.model.vo.AdminRoles;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.CommontUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,10 +81,12 @@ public class AdminServiceImpl implements AdminService {
         adminMapper.deleteAdminRole(id);
     }
 
+    //为管理员分配角色
     @Override
-    public List<Role> queryRolesUser(Admin user) {
+    public void setRoles(AdminRoles adminRoles) {
 
-        return adminMapper.queryRolesUser(user);
+        List<AdminRoles> obj = adminRoles.getObj();
+        adminMapper.setRoles(obj);
     }
 
 

@@ -3,6 +3,7 @@ package com.csd.sunshine.service;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.entity.Role;
+import com.csd.sunshine.model.vo.AdminRoles;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,12 +23,6 @@ public interface AdminService {
      */
     Admin findByName(String username);
 
-    /**
-     * 查询用户的角色集
-     * @param user 用户
-     * @return 角色集合
-     */
-    List<Role> queryRolesUser(Admin user);
 
     /**
      * 通过某用户的权限
@@ -56,6 +51,13 @@ public interface AdminService {
      * @return
      */
     void deleteById(Integer id);
+
+
+    /**
+     * 为管理员分配角色
+     * @param adminRoles 在实体类封装了管理员id和所分配的角色id集合
+     */
+    void setRoles(AdminRoles adminRoles);
 
 }
 

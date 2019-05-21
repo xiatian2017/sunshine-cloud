@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csd.sunshine.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.csd.sunshine.model.entity.Role">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="display_name" jdbcType="VARCHAR" property="display_name"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="created_at"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updated_at"/>
+    </resultMap>
+
+
+    <!--查询用户的角色-->
+    <select id="findByName" parameterType="com.csd.sunshine.model.entity.Role" resultMap="BaseResultMap">
+
+     SELECT r.id, r.display_name  FROM sun_role r JOIN sun_admin_role ur ON r.id = ur.role_id WHERE ur.admin_id = #{id}
+    </select>
+
+</mapper>
