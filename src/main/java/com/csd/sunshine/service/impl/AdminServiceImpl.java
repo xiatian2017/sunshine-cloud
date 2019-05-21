@@ -9,6 +9,8 @@ import com.csd.sunshine.util.CommontUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,13 +39,13 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int createNewAdmin(Admin user) {
         Map<String, Object> map = new HashMap<>(1);
-        map.put("username",user.getUsername());
+        map.put("username", user.getUsername());
         //查询
         List<Admin> admins = adminMapper.selectByMap(map);
         //如果已存在该用户名的用户，新建失败
-        if(null != admins && admins.size() > 0){
-            return  -1;
-        }else{
+        if (null != admins && admins.size() > 0) {
+            return -1;
+        } else {
             //添加
             user.setCreated_at(CommontUtil.getTimeStampTime());
 
@@ -57,6 +59,18 @@ public class AdminServiceImpl implements AdminService {
 
     }
 
+    //修改用户状态
+    @Override
+    public int updateUserSataus(Admin user, HttpServletRequest request) {
+        Timestamp timestamp = CommontUtil.getTimeStampTime();
+        user.setLogin_at(timestamp);
+        //ip
+        String ip = CommontUtil.getIpAddress(request);
+        user.setLast_login_ip(ip);
+        //token
+        user.setLast_login_token(CommontUtil.getUUID());
+        return adminMapper.updateUserSataus(user);
+    }
 
     @Override
     public List<Role> queryRolesUser(Admin user) {
@@ -70,9 +84,6 @@ public class AdminServiceImpl implements AdminService {
 
         return adminMapper.queryByUser(user);
     }
-
-
-
 
 
 }

@@ -4,6 +4,7 @@ import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.entity.Role;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -43,6 +44,11 @@ public interface AdminService {
      */
     int createNewAdmin(Admin user);
 
-
+    /**
+     * 修改用户状态
+     * @param user
+     * @return
+     */
+    int updateUserSataus(Admin user, HttpServletRequest request);
 
 }

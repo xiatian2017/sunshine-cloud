@@ -37,6 +37,7 @@ public class Admin implements Serializable {
     //是否只允许读操作 0否 1是
     private Integer is_readonly;
     private String last_login_token;
+    private String last_login_ip;
     private Date login_at;
     private Date created_at;
     private Date updated_at;
@@ -60,6 +61,7 @@ public class Admin implements Serializable {
                 ", status=" + status +
                 ", is_readonly=" + is_readonly +
                 ", last_login_token='" + last_login_token + '\'' +
+                ", last_login_ip='" + last_login_ip + '\'' +
                 ", login_at=" + login_at +
                 ", created_at=" + created_at +
                 ", updated_at=" + updated_at +

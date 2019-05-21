@@ -55,7 +55,7 @@ public class LoginController {
         System.out.println(username);
         System.out.println(password);
 
-        //密码加盐sha256加密
+        //密码加盐sha256加密-----》看个人习惯
         password = SHA256.SHA256Encode(password + slat);
         //subject
         Subject subject = SecurityUtils.getSubject();
@@ -71,6 +71,9 @@ public class LoginController {
             admin.setLast_login_token(admin.getToken());
             System.out.println(admin);
 
+            //登陆成功后------》修改用户状态
+            Admin user = (Admin) subject.getPrincipal();
+            adminService.updateUserSataus(user, request);
             return new BaseResult("200","登陆成功",1);
         }catch (Exception e){
             e.printStackTrace();
@@ -78,7 +81,6 @@ public class LoginController {
             return new BaseResult("500","登陆失败，用户名或密码错误",0);
         }
     }
-
 
 
     @GetMapping("/logout")

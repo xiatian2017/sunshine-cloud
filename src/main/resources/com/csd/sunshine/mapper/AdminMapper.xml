@@ -10,6 +10,7 @@
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="is_readonly" jdbcType="INTEGER" property="is_readonly"/>
         <result column="last_login_token" jdbcType="VARCHAR" property="last_login_token"/>
+        <result column="last_login_ip" jdbcType="VARCHAR" property="last_login_ip"/>
         <result column="login_at" jdbcType="TIMESTAMP" property="login_at"/>
         <result column="created_at" jdbcType="TIMESTAMP" property="created_at"/>
         <result column="updated_at" jdbcType="TIMESTAMP" property="updated_at"/>
@@ -17,7 +18,16 @@
 
     <!--查询用户名-->
     <select id="findByName" parameterType="com.csd.sunshine.model.entity.Admin" resultMap="BaseResultMap">
+
      SELECT * FROM sun_admin WHERE username =#{username} AND STATUS = 1
     </select>
+
+    <!--修改用户的状态-->
+    <update id="updateUserSataus" parameterType="com.csd.sunshine.model.entity.Admin">
+
+      UPDATE sun_admin SET last_login_ip = #{last_login_ip},
+                      last_login_token = #{last_login_token},
+                     login_at = #{login_at} WHERE id = #{id}
+        </update>
 
 </mapper>
