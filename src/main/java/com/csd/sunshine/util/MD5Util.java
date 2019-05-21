@@ -1,6 +1,5 @@
 package com.csd.sunshine.util;
 
-//import com.github.pagehelper.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
