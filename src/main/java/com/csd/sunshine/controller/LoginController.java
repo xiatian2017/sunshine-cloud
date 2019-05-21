@@ -2,9 +2,11 @@ package com.csd.sunshine.controller;
 
 import com.csd.sunshine.common.BaseResult;
 import com.csd.sunshine.common.ResultBean;
+import com.csd.sunshine.mapper.AdminMapper;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.SHA256;
+import com.csd.sunshine.util.TokenProccessor;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -32,6 +34,7 @@ public class LoginController {
 
     @Autowired
     private AdminService adminService;
+
 
     //slat
     @Value("${salt}")
@@ -61,6 +64,12 @@ public class LoginController {
         //返回信息
         try {
             subject.login(authenticationToken);
+
+            Admin admin = new Admin();
+            //获取用户登录的token--->没有存数据库，感觉不需要，后期需要再存
+            admin.setToken(TokenProccessor.getInstance().makeToken());
+            admin.setLast_login_token(admin.getToken());
+            System.out.println(admin);
 
             return new BaseResult("200","登陆成功",1);
         }catch (Exception e){

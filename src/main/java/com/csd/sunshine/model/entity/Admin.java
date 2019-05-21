@@ -1,5 +1,9 @@
 package com.csd.sunshine.model.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,9 +19,16 @@ import java.util.List;
  */
 
 @Data
+//指定表
+@TableName("sun_admin")
 public class Admin implements Serializable {
 
+    @TableId(type = IdType.AUTO)
     private Integer id;
+
+    //token
+    private String token;
+
     private String phone;
     private String username;
     private String nickname;
@@ -31,7 +42,9 @@ public class Admin implements Serializable {
     private Date updated_at;
 
     //角色和权限
+    @TableField(exist = false)
     private List<Role> roles;
+    @TableField(exist = false)
     private List<Permission> permissions;
 
 
@@ -39,6 +52,7 @@ public class Admin implements Serializable {
     public String toString() {
         return "Admin{" +
                 "id=" + id +
+                ", token='" + token + '\'' +
                 ", phone='" + phone + '\'' +
                 ", username='" + username + '\'' +
                 ", nickname='" + nickname + '\'' +
@@ -53,5 +67,4 @@ public class Admin implements Serializable {
                 ", permissions=" + permissions +
                 '}';
     }
-
 }

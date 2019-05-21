@@ -31,17 +31,17 @@ public class SunshineApplication implements ApplicationContextAware {
     public static void main(String[] args) {
 
         SpringApplication.run(SunshineApplication.class, args);
-
         System.out.println("阳光小天使");
     }
 
+    //applicationContext
     private ApplicationContext applicationContext;
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
-       // System.out.println(applicationContext.getBean("dataSource"));
     }
 
+    //加载dataSource
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean sessionFactoryBean = new MybatisSqlSessionFactoryBean();

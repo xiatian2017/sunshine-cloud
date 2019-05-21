@@ -43,18 +43,6 @@ public interface AdminService {
      */
     int createNewAdmin(Admin user);
 
-    /**
-     * 添加
-     * @param user
-     * @return 添加一行---》id自增
-     */
-    int insert(Admin user);
 
-    /**
-     * 查询
-     * @param user
-     * @return 查询多行
-     */
-    List<Admin> selectByMap(Admin user);
 
 }

@@ -20,17 +20,4 @@
      SELECT * FROM sun_admin WHERE username =#{username} AND STATUS = 1
     </select>
 
-    <!--添加-->
-    <insert id="insert" parameterType="com.csd.sunshine.model.entity.Admin">
-
-        INSERT INTO sun_admin (username,password) VALUES (#{username},#{password})
-    </insert>
-
-    <!--查询-->
-    <select id="selectByMap" parameterType="com.csd.sunshine.model.entity.Admin" resultMap="BaseResultMap">
-
-       select * from sun_admin
-    </select>
-
-
 </mapper>

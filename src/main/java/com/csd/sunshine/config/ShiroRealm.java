@@ -40,7 +40,9 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //获取当前登陆用户后查询该用户角色和权限并赋值
         Admin user = (Admin) SecurityUtils.getSubject().getPrincipal();
+        //角色
         List<Role> roles = adminService.queryRolesUser(user);
+        //权限
         List<Permission> permissions = adminService.queryByUser(user);
         user.setRoles(roles);
         user.setPermissions(permissions);

@@ -26,7 +26,6 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
 
-
     //查询用户名
     @Override
     public Admin findByName(String username) {
@@ -34,36 +33,28 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.findByName(username);
     }
 
-    //新建管理员
+    //新建管理员用户
     @Override
     public int createNewAdmin(Admin user) {
         Map<String, Object> map = new HashMap<>(1);
         map.put("username",user.getUsername());
-        //调用查询的方法查询
-        List<Admin> admins = adminMapper.selectByMap(user);
+        //查询
+        List<Admin> admins = adminMapper.selectByMap(map);
         //如果已存在该用户名的用户，新建失败
         if(null != admins && admins.size() > 0){
             return  -1;
         }else{
-            //调用添加的方法添加
+            //添加
             user.setCreated_at(CommontUtil.getTimeStampTime());
+
+            //执行添加操作
+            System.out.println(user.getUsername());
+            //同步手机号和用户名，保持一致
+            user.setPhone(user.getUsername());
+            //调用添加方法
             return adminMapper.insert(user);
         }
 
-    }
-
-    //添加
-    @Override
-    public int insert(Admin user) {
-
-        return adminMapper.insert(user);
-    }
-
-    //查询
-    @Override
-    public List<Admin> selectByMap(Admin user) {
-
-        return adminMapper.selectByMap(user);
     }
 
 

@@ -26,7 +26,6 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
 
         // 操作权限验证TODO???
-
         return true;
     }
 }
