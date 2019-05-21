@@ -19,15 +19,11 @@ import java.util.List;
  */
 
 @Data
-//指定表
 @TableName("sun_admin")
 public class Admin implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
-
-    //token
-    private String token;
 
     private String phone;
     private String username;
@@ -53,7 +49,6 @@ public class Admin implements Serializable {
     public String toString() {
         return "Admin{" +
                 "id=" + id +
-                ", token='" + token + '\'' +
                 ", phone='" + phone + '\'' +
                 ", username='" + username + '\'' +
                 ", nickname='" + nickname + '\'' +
@@ -70,3 +65,4 @@ public class Admin implements Serializable {
                 '}';
     }
 }
+

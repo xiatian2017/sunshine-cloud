@@ -68,6 +68,7 @@ public class AdminController {
      * @return 删除信息
      */
     @PostMapping("/deleteById")
+    @ApiOperation(value = "根据id删除管理员用户")
     public BaseResult deleteById(Integer id) throws AppException{
         System.out.println(id);
         Admin loginUser = (Admin) SecurityUtils.getSubject().getPrincipal();
@@ -84,3 +85,4 @@ public class AdminController {
     }
 
 }
+

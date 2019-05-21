@@ -39,7 +39,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int createNewAdmin(Admin user) {
         Map<String, Object> map = new HashMap<>(1);
-        map.put("username", user.getUsername());
+        map.put("username",user.getUsername());
         //查询
         List<Admin> admins = adminMapper.selectByMap(map);
         //如果已存在该用户名的用户，新建失败
@@ -56,7 +56,6 @@ public class AdminServiceImpl implements AdminService {
             //调用添加方法
             return adminMapper.insert(user);
         }
-
     }
 
     //修改用户状态

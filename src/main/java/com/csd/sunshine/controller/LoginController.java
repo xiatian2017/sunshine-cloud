@@ -55,6 +55,7 @@ public class LoginController {
         System.out.println(username);
         System.out.println(password);
 
+        //密码加盐sha256加密
         //密码加盐sha256加密-----》看个人习惯
         password = SHA256.SHA256Encode(password + slat);
         //subject
@@ -65,13 +66,7 @@ public class LoginController {
         try {
             subject.login(authenticationToken);
 
-            Admin admin = new Admin();
-            //获取用户登录的token--->没有存数据库，感觉不需要，后期需要再存
-            admin.setToken(TokenProccessor.getInstance().makeToken());
-            admin.setLast_login_token(admin.getToken());
-            System.out.println(admin);
-
-            //登陆成功后------》修改用户状态
+            //登陆成功后------》修改用户状态-------》修改成功后、存了登陆的token、IP、登陆时间
             Admin user = (Admin) subject.getPrincipal();
             adminService.updateUserSataus(user, request);
             return new BaseResult("200","登陆成功",1);
@@ -81,6 +76,8 @@ public class LoginController {
             return new BaseResult("500","登陆失败，用户名或密码错误",0);
         }
     }
+
+
 
 
     @GetMapping("/logout")
@@ -96,6 +93,7 @@ public class LoginController {
             return new BaseResult("500","退出失败",0);
         }
     }
+
 
 
     /**
