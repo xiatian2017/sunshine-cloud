@@ -23,7 +23,7 @@
     </select>
 
     <!--通过id修改用户的状态-->
-    <update id="updateUserSataus" parameterType="com.csd.sunshine.model.entity.Admin">
+    <update id="updateUserStatus" parameterType="com.csd.sunshine.model.entity.Admin">
 
       UPDATE sun_admin SET last_login_ip = #{last_login_ip},
                       last_login_token = #{last_login_token},

@@ -65,7 +65,7 @@ public class LoginController {
 
             //登陆成功后------》修改用户状态-------》修改成功后、存了登陆的token、IP、登陆时间
             Admin user = (Admin) subject.getPrincipal();
-            adminService.updateUserSataus(user, request);
+            adminService.updateUserStatus(user, request);
             return new BaseResult("200","登陆成功",1);
         }catch (Exception e){
             e.printStackTrace();

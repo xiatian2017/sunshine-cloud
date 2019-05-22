@@ -61,7 +61,7 @@ public class AdminServiceImpl implements AdminService {
 
     //修改用户状态
     @Override
-    public int updateUserSataus(Admin user, HttpServletRequest request) {
+    public int updateUserStatus(Admin user, HttpServletRequest request) {
         Timestamp timestamp = CommontUtil.getTimeStampTime();
         user.setLogin_at(timestamp);
         //ip
@@ -69,7 +69,7 @@ public class AdminServiceImpl implements AdminService {
         user.setLast_login_ip(ip);
         //token
         user.setLast_login_token(CommontUtil.getUUID());
-        return adminMapper.updateUserSataus(user);
+        return adminMapper.updateUserStatus(user);
     }
 
     //根据id删除管理员操作

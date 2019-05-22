@@ -26,7 +26,7 @@ public interface AdminMapper extends BaseMapper<Admin> {
 
     List<Permission> queryByUser(Admin user);
 
-    int updateUserSataus(Admin user);
+    int updateUserStatus(Admin user);
 
     void deleteAdminRole(Integer id);
 

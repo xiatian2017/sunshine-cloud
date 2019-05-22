@@ -43,7 +43,7 @@ public interface AdminService {
      * @param user
      * @return
      */
-    int updateUserSataus(Admin user, HttpServletRequest request);
+    int updateUserStatus(Admin user, HttpServletRequest request);
 
     /**
      * 根据id删除管理员
