@@ -32,11 +32,27 @@ public class RoleController {
         role.setCreated_at(CommontUtil.getTimeStampTime());
         try {
             roleService.add(role);
+            log.info("增加角色成功");
             return new BaseResult(BaseCode.SUCCESS.getCode(),"增加角色成功", 1);
         }catch (Exception e){
             e.printStackTrace();
             log.error("增加角色异常",e);
-            return new BaseResult(BaseCode.SUCCESS.getCode(),"增加角色异常", 0);
+            return new BaseResult(BaseCode.FAIL.getCode(),"增加角色异常", 0);
+        }
+    }
+
+
+    @PostMapping("/deleteRoleById")
+    @ApiOperation(value = "根据角色id删除角色")
+    public BaseResult deleteById(Integer id) {
+        try {
+            roleService.deleteById(id);
+            log.info("删除角色成功");
+            return new BaseResult(BaseCode.SUCCESS.getCode(),"删除角色成功", 1);
+        }catch (Exception e){
+            e.printStackTrace();
+            log.error("删除角色异常",e);
+            return new BaseResult(BaseCode.FAIL.getCode(),"删除角色异常", 0);
         }
     }
 

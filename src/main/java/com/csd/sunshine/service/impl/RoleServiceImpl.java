@@ -28,10 +28,20 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.queryRolesUser(user);
     }
 
-    //新建角色
+    //增加角色
     @Override
     public void add(Role role) {
 
         roleMapper.insert(role);
+    }
+
+    //根据id删除角色
+    @Override
+    public void deleteById(Integer id){
+
+        //要删除角色，先删除角色<---->权限关系，角色<---->用户关系
+        roleMapper.deleteRolePermission(id);
+        roleMapper.deleteAdminRole(id);
+        roleMapper.deleteById(id);
     }
 }
