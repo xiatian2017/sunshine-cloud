@@ -96,7 +96,8 @@ public class AdminController {
      */
     @PostMapping("/allotRole")
     @ApiOperation(value = "添加管理员对应的角色")
-    public BaseResult setRoles(AdminRoles adminRoles) {
+    public BaseResult setRoles(@RequestBody AdminRoles adminRoles) {
+        //这里封装了uid和rid在getObj方法中，前端传uid和rids-----》对应的多个rid
         try {
             adminService.setRoles(adminRoles);
             log.info(" 添加管理员对应的=" + adminRoles + "角色");

@@ -26,8 +26,8 @@
     <update id="updateUserStatus" parameterType="com.csd.sunshine.model.entity.Admin">
 
       UPDATE sun_admin SET last_login_ip = #{last_login_ip},
-                      last_login_token = #{last_login_token},
-                     login_at = #{login_at} WHERE id = #{id}
+              last_login_token = #{last_login_token},
+              login_at = #{login_at} WHERE id = #{id}
         </update>
 
     <!--通过id删除当前管理员-->
@@ -36,4 +36,12 @@
         delete from sun_admin_role where admin_id = #{id}
     </delete>
 
+    <!--批量插入,分配用户角色-->
+    <insert id="setRoles" parameterType="com.csd.sunshine.model.vo.AdminRoles">
+
+        INSERT INTO sun_admin_role (admin_id, role_id) VALUES
+        <foreach collection='list' item='item' separator=','>
+            (#{item.uid},#{item.role})
+        </foreach>
+    </insert>
 </mapper>

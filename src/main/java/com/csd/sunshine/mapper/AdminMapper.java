@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.vo.AdminRoles;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -26,14 +25,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
 
     void deleteAdminRole(Integer id);
 
-    /**
-     * 批量插入 分配用户角色
-     *
-     * @param obj
-     */
-    @Insert({"<script>insert into sun_admin_role (admin_id, role_id) values ",
-            "<foreach collection='list'  item='item' separator=','> ",
-            "(#{item.uid},#{item.role})",
-            "</foreach></script>"})
+    //调用了封装的obj方法
     void setRoles(List<AdminRoles> obj);
 }

@@ -97,7 +97,7 @@ public class RoleController {
     @PostMapping("/allotPermission")
     @ApiOperation(value = "给某角色分配权限")
     public BaseResult allotPermission(@RequestBody RolePermissions rolePermissions) {
-        System.out.println(rolePermissions);
+        //这里封装了rid和Pid在getObj方法中，前端传rid和pids-----》对应的多个pid
         try {
             roleService.allotRolePermissions(rolePermissions);
             log.info("分配权限成功");

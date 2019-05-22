@@ -27,4 +27,14 @@
 
     delete from sun_admin_role where role_id = #{id}
     </delete>
+
+    <!--给角色分配权限-->
+    <insert id="allotPermission" parameterType="com.csd.sunshine.model.vo.RolePermissions">
+
+        insert into sun_role_permission (permission_id, role_id) values
+        <foreach collection='list' item='item' separator=','>
+            (#{item.pid},#{item.rid})
+        </foreach>
+    </insert>
+
 </mapper>
