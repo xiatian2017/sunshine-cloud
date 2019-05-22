@@ -2,8 +2,10 @@ package com.csd.sunshine.service;
 
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Role;
+import com.csd.sunshine.model.vo.RolePermissions;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: sunshine
@@ -37,4 +39,17 @@ public interface RoleService {
      * @param role role
      */
     void updateRole(Role role);
+
+    /**
+     * 根据角色id查询权限
+     * @param id 角色id
+     */
+    List<Map<String, Object>> queryPermissionRole(Integer id);
+
+    /**
+     * 给某角色分配权限
+     * @param rolePermissions 参数封装
+     */
+    void allotRolePermissions(RolePermissions rolePermissions);
+
 }
