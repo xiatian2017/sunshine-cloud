@@ -2,10 +2,10 @@ package com.csd.sunshine.service.impl;
 
 import com.csd.sunshine.mapper.AdminMapper;
 import com.csd.sunshine.model.entity.Admin;
-import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.vo.AdminRoles;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.CommontUtil;
+import com.csd.sunshine.util.LuKeIp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,8 +63,8 @@ public class AdminServiceImpl implements AdminService {
     public int updateUserStatus(Admin user, HttpServletRequest request) {
         Timestamp timestamp = CommontUtil.getTimeStampTime();
         user.setLogin_at(timestamp);
-        //ip
-        String ip = CommontUtil.getIpAddress(request);
+        //获取登陆ip----》必须要调用自己的工具类,用java获取ip地址会出现问题,获取的ip将是 0:0:0:0:0:0:0:1---->调用工具类获取当前的登陆IP
+        String ip = LuKeIp.getIpAddress(request);
         user.setLast_login_ip(ip);
         //token
         user.setLast_login_token(CommontUtil.getUUID());
