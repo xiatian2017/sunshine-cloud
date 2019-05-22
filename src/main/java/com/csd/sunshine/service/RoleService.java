@@ -16,7 +16,7 @@ public interface RoleService {
     /**
      * 查询用户的角色
      * @param user 用户
-     * @return 角色集合
+     * @return 角色
      */
     List<Role> queryRolesUser(Admin user);
 

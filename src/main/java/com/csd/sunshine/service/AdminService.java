@@ -1,11 +1,8 @@
 package com.csd.sunshine.service;
 
 import com.csd.sunshine.model.entity.Admin;
-import com.csd.sunshine.model.entity.Permission;
 import com.csd.sunshine.model.vo.AdminRoles;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * @Description: sunshine
@@ -21,14 +18,6 @@ public interface AdminService {
      * @return 管理员用户
      */
     Admin findByName(String username);
-
-
-    /**
-     * 通过某用户的权限
-     * @param user 用户
-     * @return 权限集合
-     */
-    List<Permission> queryByUser(Admin user);
 
     /**
      * 新建管理员用户

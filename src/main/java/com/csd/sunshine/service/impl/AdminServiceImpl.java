@@ -89,11 +89,4 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
-    @Override
-    public List<Permission> queryByUser(Admin user) {
-
-        return adminMapper.queryByUser(user);
-    }
-
-
 }

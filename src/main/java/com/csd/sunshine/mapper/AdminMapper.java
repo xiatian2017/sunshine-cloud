@@ -3,8 +3,6 @@ package com.csd.sunshine.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import com.csd.sunshine.model.entity.Admin;
-import com.csd.sunshine.model.entity.Permission;
-import com.csd.sunshine.model.entity.Role;
 import com.csd.sunshine.model.vo.AdminRoles;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -23,8 +21,6 @@ import java.util.List;
 public interface AdminMapper extends BaseMapper<Admin> {
 
     Admin findByName(String username);
-
-    List<Permission> queryByUser(Admin user);
 
     int updateUserStatus(Admin user);
 

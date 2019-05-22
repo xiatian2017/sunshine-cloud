@@ -11,7 +11,7 @@
 
 
     <!--查询用户的角色-->
-    <select id="findByName" parameterType="com.csd.sunshine.model.entity.Role" resultMap="BaseResultMap">
+    <select id="queryRolesUser" parameterType="com.csd.sunshine.model.entity.Role" resultMap="BaseResultMap">
 
      SELECT r.id, r.display_name  FROM sun_role r JOIN sun_admin_role ur ON r.id = ur.role_id WHERE ur.admin_id = #{id}
     </select>
