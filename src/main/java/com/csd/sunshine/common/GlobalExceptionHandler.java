@@ -1,7 +1,6 @@
 package com.csd.sunshine.common;
 
 import com.alibaba.fastjson.JSONPathException;
-import com.fasterxml.jackson.core.JsonParseException;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -66,9 +65,7 @@ public class GlobalExceptionHandler {
             return ResultBean.ofError(e.getMessage());
         } else if (e instanceof NumberFormatException) {
             return ResultBean.ofError("参数类型转换异常");
-        } else if (e instanceof JsonParseException) {
-            return ResultBean.ofError("参数类型转换异常");
-        } else if (e instanceof JSONPathException) {
+        }else if (e instanceof JSONPathException) {
             return ResultBean.ofError("类型转换异常");
         } else if (e instanceof BadSqlGrammarException) {
             return ResultBean.ofError("出错啦,请稍后再试!");
