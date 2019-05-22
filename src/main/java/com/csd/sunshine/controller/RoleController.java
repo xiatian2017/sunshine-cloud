@@ -29,6 +29,7 @@ public class RoleController {
     @PostMapping("/addRole")
     @ApiOperation(value = "增加角色")
     public BaseResult createRole(@RequestBody Role role){
+        //创建时获取当前创建时间
         role.setCreated_at(CommontUtil.getTimeStampTime());
         try {
             roleService.add(role);
@@ -56,4 +57,19 @@ public class RoleController {
         }
     }
 
+
+    @PostMapping("/updateRole")
+    @ApiOperation(value = "根据id去修改角色")
+    public BaseResult updateRole(@RequestBody Role role) {
+        //修改成功时获取当前修改时间
+        role.setUpdated_at(CommontUtil.getTimeStampTime());
+        try {
+            roleService.updateRole(role);
+            return new BaseResult(BaseCode.SUCCESS.getCode(),"修改角色成功", 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("修改角色异常",e);
+            return new BaseResult(BaseCode.FAIL.getCode(),"修改角色异常", 0);
+        }
+    }
 }

@@ -23,14 +23,18 @@ public interface RoleService {
     /**
      * 增加角色
      * @param role 角色
-     * @throws
      */
     void add(Role role);
 
     /**
      * 根据id删除角色
      * @param id id
-     * @throws
      */
     void deleteById(Integer id);
+
+    /**
+     * 根据id修改角色
+     * @param role role
+     */
+    void updateRole(Role role);
 }

@@ -44,4 +44,11 @@ public class RoleServiceImpl implements RoleService {
         roleMapper.deleteAdminRole(id);
         roleMapper.deleteById(id);
     }
+
+    //根据id修改角色
+    @Override
+    public void updateRole(Role role){
+
+        roleMapper.updateById(role);
+    }
 }

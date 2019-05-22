@@ -32,7 +32,7 @@ public interface PermissionMapper extends BaseMapper<Permission> {
     List<Permission> queryByUser(@Param("user") Admin user);
 
 
-    //根据角色id查询该角色所有的权限
+    //根据角色id查询该角色对应的所有权限
     @Select({"select p.id, p.name, p.parent_id pid, p.display_name sName, p.is_show isShow ",
             "from sun_permission p ",
             "join sun_role_permission rp on p.id = rp.permission_id ",
