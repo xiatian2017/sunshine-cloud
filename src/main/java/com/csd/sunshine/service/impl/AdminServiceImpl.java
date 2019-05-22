@@ -87,6 +87,7 @@ public class AdminServiceImpl implements AdminService {
         List<AdminRoles> obj = adminRoles.getObj();
         //给管理员分配角色时，先删除该管理员对应的所有角色，重新分配角色
         adminMapper.deleteAdminRole(adminRoles.getUid());
+        //为管理员分配角色
         adminMapper.setRoles(obj);
     }
 

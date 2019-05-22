@@ -123,6 +123,7 @@ public class RoleServiceImpl implements RoleService {
 
         //给角色分配权限时，先删除该角色的所有权限，重新分配权限
         roleMapper.deleteRolePermission(rolePermissions.getRid());
+        //给某角色分配权限
         roleMapper.allotPermission(rolePermissions.getObj());
     }
 
