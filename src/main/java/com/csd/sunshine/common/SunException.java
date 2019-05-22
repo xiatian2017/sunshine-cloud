@@ -3,9 +3,10 @@ package com.csd.sunshine.common;
 
 /**
  * 自定义阳光系统异常
- *
- * @author liuqi
- * @date 2019/4/13
+ * @Description: sunshine
+ * @EnglishName LuKe
+ * @authod liuqi
+ * @date 2019/5/22 18:34
  */
 public class SunException extends RuntimeException {
 
