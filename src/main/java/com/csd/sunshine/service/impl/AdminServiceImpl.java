@@ -3,7 +3,6 @@ package com.csd.sunshine.service.impl;
 import com.csd.sunshine.mapper.AdminMapper;
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
-import com.csd.sunshine.model.entity.Role;
 import com.csd.sunshine.model.vo.AdminRoles;
 import com.csd.sunshine.service.AdminService;
 import com.csd.sunshine.util.CommontUtil;

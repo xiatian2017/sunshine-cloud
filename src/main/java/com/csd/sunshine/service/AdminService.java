@@ -2,7 +2,6 @@ package com.csd.sunshine.service;
 
 import com.csd.sunshine.model.entity.Admin;
 import com.csd.sunshine.model.entity.Permission;
-import com.csd.sunshine.model.entity.Role;
 import com.csd.sunshine.model.vo.AdminRoles;
 
 import javax.servlet.http.HttpServletRequest;

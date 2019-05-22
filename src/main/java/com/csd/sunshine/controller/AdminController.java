@@ -42,7 +42,7 @@ public class AdminController {
      * @param user 要新建的用户
      * @return 返回信息
      */
-    @PostMapping("/add")
+    @PostMapping("/addUser")
     @ApiOperation(value = "新建管理用户")
     public BaseResult createAdminUser(@RequestBody Admin user) {
         //接收前端传过来的参数
@@ -59,7 +59,7 @@ public class AdminController {
             return new BaseResult("-1", "用户名重复", 0);
         } else {
 
-            log.info("用户(id=" + loginUser.getId() + ") 新建用户（name：" + user.getUsername() + ")");
+            log.info("用户(id=" + loginUser.getId() + ") 新建用户（   name：" + user.getUsername() + ")");
             return new BaseResult(BaseCode.SUCCESS.getCode(), "新建成功", 1);
         }
     }
@@ -94,11 +94,9 @@ public class AdminController {
      *
      * @param adminRoles 用户id和分配的角色id
      */
-    @PostMapping("/addRole")
+    @PostMapping("/allotRole")
     @ApiOperation(value = "添加管理员对应的角色")
     public BaseResult setRoles(AdminRoles adminRoles) {
-
-        System.out.println(adminRoles+"11111111111111111111");
         try {
             adminService.setRoles(adminRoles);
             log.info(" 添加管理员对应的=" + adminRoles + "角色");

@@ -25,23 +25,19 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    /**
-     * 增加角色
-     * @return 结果
-     */
-//    @PostMapping("/add")
-//    @ApiOperation(value = "增加角色")
-//    public BaseResult createRole(@RequestBody Role role){
-//       // Admin user = (Admin) SecurityUtils.getSubject().getPrincipal();
-//        role.setCreated_at(CommontUtil.getTimeStampTime());
-//        try {
-//            roleService.add(role);
-//            return new BaseResult(BaseCode.SUCCESS.getCode(),"增加角色成功", null);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            log.error("增加角色异常",e);
-//            return new BaseResult(BaseCode.SUCCESS.getCode(),"增加角色异常", 0);
-//        }
-//    }
+
+    @PostMapping("/addRole")
+    @ApiOperation(value = "增加角色")
+    public BaseResult createRole(@RequestBody Role role){
+        role.setCreated_at(CommontUtil.getTimeStampTime());
+        try {
+            roleService.add(role);
+            return new BaseResult(BaseCode.SUCCESS.getCode(),"增加角色成功", 1);
+        }catch (Exception e){
+            e.printStackTrace();
+            log.error("增加角色异常",e);
+            return new BaseResult(BaseCode.SUCCESS.getCode(),"增加角色异常", 0);
+        }
+    }
 
 }
